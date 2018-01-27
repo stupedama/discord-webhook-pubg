@@ -26,7 +26,7 @@ class Webhook:
       self.token = token
       self.url = "https://discordapp.com/api/webhooks/"+self.hookId+"/"+self.token 
       self.headers = {
-        'user-agent': 'pubg-webhook '+_version,
+        'user-agent': 'discord-webhook-pubg '+_version,
         'content-type': 'application/x-www-form-urlencoded'
       }
       self.username = username
@@ -41,7 +41,8 @@ class Webhook:
       """
       Checks if the post are not more than x (3 is default) days old.
       """
-      date = datetime.now() - timedelta(days=how_old)   
+      date = datetime.now() - timedelta(days=how_old)
+      # timezones is not supported well   
       post = datetime.strptime(post_date.rsplit(' ', 1)[0], "%a, %d %b %Y %H:%M:%S")
       if(date < post):
          return True
