@@ -99,3 +99,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# discord-webhook-pubg specific
+pubg.db
