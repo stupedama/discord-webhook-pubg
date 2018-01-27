@@ -12,5 +12,5 @@ a discord webhook for pubg news
 # run
 * crontab -e
 * add (for checking news every 5 minutes):
-* 5 * * * * python /path/to/discord-webhook-pubg/hook.py 
+* */5 * * * * python /path/to/discord-webhook-pubg/hook.py 
 
