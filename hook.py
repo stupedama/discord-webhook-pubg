@@ -31,7 +31,7 @@ class Webhook:
       }
       self.username = username
 
-   def webhook(self, message):
+   def postWebhook(self, message):
       w = {}
       w['content'] = message
       w['username'] = self.username
@@ -64,7 +64,7 @@ class Webhook:
 
          if(data is None):
             if(self.checkDate(post_date) is True):
-               self.webhook(entry)
+               self.postWebhook(entry)
                c.execute('INSERT INTO news VALUES (?)', (id,))
                conn.commit()
          # after the datecheck, I dont think we need to sleep.
@@ -83,4 +83,4 @@ if __name__ == '__main__':
    if(token and id):
       main()
    else:
-      print("Please add tokenid and/or id to bot.py")
+      print("Please add tokenid and/or id to hook.py")
