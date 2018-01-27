@@ -25,7 +25,7 @@ class Webhook:
       self.token = token
       self.url = "https://discordapp.com/api/webhooks/"+self.hookId+"/"+self.token 
       self.headers = {
-        'user-agent': 'pubg-webhook '+_version,
+        'user-agent': 'discord-webhook-pubg '+_version,
         'content-type': 'application/x-www-form-urlencoded'
       }
       self.username = username
