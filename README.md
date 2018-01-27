@@ -7,6 +7,7 @@ a discord webhook for pubg news
 
 # installation
 * pip -r requirements.txt
+* add your id and token to hook.py
 
 # run
 * crontab -e
