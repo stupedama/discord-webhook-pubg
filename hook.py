@@ -65,4 +65,4 @@ if __name__ == '__main__':
    if(token and id):
       main()
    else:
-      print("Please add tokenid and/or id to bot.py")
+      print("Please add tokenid and/or id to hook.py")
