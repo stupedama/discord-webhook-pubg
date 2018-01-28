@@ -1,5 +1,5 @@
 # discord-webhook-pubg
-a discord webhook for pubg news
+a discord webhook for pubg forum news. It checks "News & Announcements" and "Patch Notes & Known Issues" from https://forums.playbattlegrounds.com/. If the post is not older than 3 days and not posted before it sends a webhook to your discord channel.
 
 # requirements
 * feedparser
