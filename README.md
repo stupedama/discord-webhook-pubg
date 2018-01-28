@@ -8,7 +8,7 @@ a discord webhook for pubg forum news. It checks "News & Announcements" and "Pat
 # installation
 * pip -r requirements.txt
 * add your id and token to hook.py
-* For more information se INSTALL.md file or wiki.
+* For more information see INSTALL.md file or wiki.
 # run
 * crontab -e
 * add (for checking news every 5 minutes):
