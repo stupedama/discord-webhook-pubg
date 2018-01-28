@@ -15,4 +15,4 @@ a discord webhook for pubg news
 */5 * * * * python /path/to/discord-webhook-pubg/hook.py 
 
 # webhook
-If you want to use my webhook. Email me your id and token and I will add you to my pubg webhook. 
+If you want to use my webhook. Send me an email to fredrik@ffj.no with your id and token. 
