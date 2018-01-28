@@ -2,7 +2,6 @@ import requests
 import json
 import feedparser
 import sqlite3
-#import time
 from datetime import datetime, timedelta
 
 _version = "0.1-krabbetein"
@@ -67,8 +66,6 @@ class Webhook:
                self.postWebhook(entry)
                c.execute('INSERT INTO news VALUES (?)', (id,))
                conn.commit()
-         # after the datecheck, I dont think we need to sleep.
-         #time.sleep(3)
 
    def run(self):
       self.checkForum('https://forums.playbattlegrounds.com/forum/5-news-announcements.xml/')
@@ -78,6 +75,7 @@ class Webhook:
 def main():
    w = Webhook(id, token, username)
    w.run()
+   conn.close()
 
 if __name__ == '__main__':
    if(token and id):
