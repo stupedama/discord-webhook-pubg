@@ -58,6 +58,7 @@ class Webhook:
          id = pubg_news['entries'][x]['id']
          post_date = pubg_news['entries'][x]['published']
          
+         # see if the post is already posted
          c.execute('SELECT id FROM news WHERE id = ?', (id,))
          data = c.fetchone()
 
