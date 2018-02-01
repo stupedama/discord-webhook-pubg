@@ -48,10 +48,10 @@ class Webhook:
       """
       checks if theres already been posted since (default) 2 hours ago.
       """
-      now = datetime.now() - timedelta(hours=interval)
+      date = datetime.now() - timedelta(hours=interval)
       c.execute('''SELECT date as "date [timestamp]" FROM news ORDER BY date DESC LIMIT 1''')
       data = c.fetchone()
-      if(now > data[0]):
+      if(date > data[0]):
          return True
       else:
          return False

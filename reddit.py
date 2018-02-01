@@ -1,5 +1,6 @@
 import requests
 import sqlite3
+import re
 from datetime import datetime, timedelta
 
 from webhook import Webhook
@@ -17,7 +18,7 @@ except sqlite3.OperationalError:
 
 class Reddit(Webhook):
    
-   def checkForum(self, url, score_likes=200):
+   def checkForum(self, url, score_likes=10):
       """
       Checks pubg subreddit for 20 top posts and if they have more than (default) 200 likes,
       if theres no older post than (default) 2 hours since last post, send webhook. 
@@ -38,17 +39,14 @@ class Reddit(Webhook):
             data = c.fetchone()
 
             if((media is not None) and (score >= score_likes) and (data is None)):
-               ## discord wont show a preview for reddit videos. have to fix this first.
-               #try:
-                  #entry = reddit['data']['children'][x]['data']['media']['reddit_video']['fallback_url']
+               try:
+                  ## no full video when posted on discord.
+                  e = reddit['data']['children'][x]['data']['media']['reddit_video']['dash_url']
+                  #entry = re.sub('DASHPlaylist.mpd$', '', e)
                   #self.postWebhook(entry)
                   #c.execute('INSERT INTO news VALUES (?, ?)', (id, datetime.now()))
                   #conn.commit()
-               #except KeyError:
-               try:
-                  entry = reddit['data']['children'][x]['data']['media']['reddit_video']['fallback_url']
-                  c.execute('INSERT INTO news VALUES (?, ?)', (id, datetime.now()))
-                  conn.commit()
+                  pass
                except KeyError:
                   try:
                      is_video = reddit['data']['children'][x]['data']['is_video']
@@ -62,3 +60,4 @@ class Reddit(Webhook):
          print("less than 2 hours") 
    def run(self):
       self.checkForum('https://www.reddit.com/r/pubg.json')
+      self.checkForum('https://www.reddit.com/r/PUBATTLEGROUNDS.json')
