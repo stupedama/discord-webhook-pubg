@@ -79,14 +79,3 @@ class Webhook:
       self.checkForum('https://forums.playbattlegrounds.com/forum/5-news-announcements.xml/')
       self.checkForum('https://forums.playbattlegrounds.com/forum/205-patch-notes-known-issues.xml/')
 
-# run
-def main():
-   w = Webhook(id, token, username)
-   w.run()
-   conn.close()
-
-if __name__ == '__main__':
-   if(token and id):
-      main()
-   else:
-      print("Please add tokenid and/or id to hook.py")
