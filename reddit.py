@@ -17,30 +17,48 @@ except sqlite3.OperationalError:
 
 class Reddit(Webhook):
    
-   def checkForum(self, url, score_likes=100):
+   def checkForum(self, url, score_likes=10):
       """
-      Checks pubg subreddit for 5 top posts and if they have more than (default) 100 likes,
+      Checks pubg subreddit for 20 top posts and if they have more than (default) 200 likes,
       if theres no older post than (default) 2 hours since last post, send webhook. 
       """
       reddit = requests.get(url, headers = {'User-agent': "discord-webhook-pubg " + _version}).json()
       
       # check if theres already posted a webhook recently
       if(self.lastPost(interval=2) is True): 
-         # check 5 top posts if they pass our quality check
-         n = 5
+         # check 20 top posts if they pass our quality check
+         # 20 is maximum otherwise it will fail.
+         n = 20
          for x in range(0, n):
+            media = reddit['data']['children'][x]['data']['media']
             score = reddit['data']['children'][x]['data']['score']
             id = reddit['data']['children'][x]['data']['id']
-            media = reddit['data']['children'][x]['data']['media']
- 
+
             c.execute('SELECT id FROM news WHERE id = ?', (id,))
             data = c.fetchone()
 
-            if((data is None) and (score >= score_likes) and (media is not None)):
-               entry = reddit['data']['children'][x]['data']['url']
-               self.postWebhook(entry)
-               c.execute('INSERT INTO news VALUES (?, ?)', (id, datetime.now()))
-               conn.commit()
- 
+            if((media is not None) and (score >= score_likes) and (data is None)):
+               ## discord wont show a preview for reddit videos. have to fix this first.
+               #try:
+                  #entry = reddit['data']['children'][x]['data']['media']['reddit_video']['fallback_url']
+                  #self.postWebhook(entry)
+                  #c.execute('INSERT INTO news VALUES (?, ?)', (id, datetime.now()))
+                  #conn.commit()
+               #except KeyError:
+               try:
+                  entry = reddit['data']['children'][x]['data']['media']['reddit_video']['fallback_url']
+                  c.execute('INSERT INTO news VALUES (?, ?)', (id, datetime.now()))
+                  conn.commit()
+               except KeyError:
+                  try:
+                     is_video = reddit['data']['children'][x]['data']['is_video']
+                     entry = reddit['data']['children'][x]['data']['url']
+                     self.postWebhook(entry)
+                     c.execute('INSERT INTO news VALUES (?, ?)', (id, datetime.now()))
+                     conn.commit()
+                  except KeyError:
+                     pass
+      else:
+         print("less than 2 hours") 
    def run(self):
       self.checkForum('https://www.reddit.com/r/pubg.json')

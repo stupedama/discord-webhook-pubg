@@ -32,7 +32,7 @@ class Webhook:
       w['username'] = self.username
       r = requests.post(self.url, headers=self.headers, data=json.dumps(w))
 
-   def checkDate(self, post_date, how_old=4):
+   def checkDate(self, post_date, how_old=3):
       """
       Checks if the post are not more than x (3 is default) days old.
       """
@@ -44,7 +44,7 @@ class Webhook:
       else:
          return False
 
-   def lastPost(self, interval):
+   def lastPost(self, interval=2):
       """
       checks if theres already been posted since (default) 2 hours ago.
       """
