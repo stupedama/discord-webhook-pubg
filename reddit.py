@@ -18,9 +18,9 @@ except sqlite3.OperationalError:
 
 class Reddit(Webhook):
    
-   def checkForum(self, url, score_likes=10):
+   def checkForum(self, url, score_likes=100):
       """
-      Checks pubg subreddit for 20 top posts and if they have more than (default) 200 likes,
+      Checks pubg subreddit for 20 top posts and if they have more than (default) 100 likes,
       if theres no older post than (default) 2 hours since last post, send webhook. 
       """
       reddit = requests.get(url, headers = {'User-agent': "discord-webhook-pubg " + _version}).json()
