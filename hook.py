@@ -23,9 +23,10 @@ def main():
    f = Forum(id, token, username)
    f.run()
 
+   ## currently a little buggy.
    # pubg reddit
-   r = Reddit(id, token, username)
-   r.run()
+   #r = Reddit(id, token, username)
+   #r.run()
 
    #sqlite3
    conn.close()
