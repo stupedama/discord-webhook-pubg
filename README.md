@@ -14,3 +14,5 @@
 * add (for checking news every 5 minutes):
 */5 * * * * python /path/to/discord-webhook-pubg/hook.py 
 
+# add you to my webhook
+if you want in on my runnin webhook mail me at fredrik@ffj.no
