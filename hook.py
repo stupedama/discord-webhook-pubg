@@ -17,6 +17,7 @@ try:
 except sqlite3.OperationalError:
    print("sqlite table already exists")
 
+
 # run
 def main():
    # pubg forum
@@ -30,6 +31,7 @@ def main():
 
    #sqlite3
    conn.close()
+
 
 if __name__ == '__main__':
    if(token and id):
