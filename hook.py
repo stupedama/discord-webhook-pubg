@@ -2,7 +2,7 @@ import sqlite3
 from forum import Forum
 from reddit import Reddit
 
-_version = "0.2-krabbetein"
+_version = "0.3-krabbetein"
 
 # webhook setup
 username = 'PUBG webhook'
