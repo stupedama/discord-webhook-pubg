@@ -10,6 +10,11 @@ It checks "News & Announcements" and "Patch Notes & Known Issues" from https://f
 - add your id and token to config.py
 - For more information see INSTALL.md file or wiki.
 
+## update
+- git stash
+- git pull
+- add id and token to config.py
+
 ## run
 - crontab -e
 - add (for checking news every 5 minutes):
