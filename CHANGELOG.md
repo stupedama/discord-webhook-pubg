@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Made a own class to handle the database connection. It makes the database connection safer.
 - Made a config.py file for editing the name of the bot and and to store 'id' and 'token'. Makes it easier to update the script.
 - TODO.md file. What I'm planning on doing or working on currently.
+- Webhooks now embeds a title, image and the link
 
 ### Removed
 - Removed the reddit.py file. I decided to remove the file because I'm not using it and I want this project to do one thing.
