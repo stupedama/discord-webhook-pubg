@@ -1,6 +1,7 @@
 import feedparser
 from datetime import datetime, timedelta
 from database import Database
+import config
 
 from webhook import Webhook
 
@@ -28,6 +29,10 @@ class Forum(Webhook):
                   c.execute('INSERT INTO news VALUES (?, ?)', (id, datetime.now()))
                   dbconn.commit()
 
+
    def run(self):
-      self.checkForum('https://forums.pubg.com/forum/10-bug-reports-known-issues.xml/')
-      self.checkForum('https://forums.pubg.com/forum/5-pc-news-patch-notes.xml/')
+      if config.enable_bug_reports is True:
+         self.checkForum('https://forums.pubg.com/forum/10-bug-reports-known-issues.xml/')
+
+      if config.enable_news is True:
+         self.checkForum('https://forums.pubg.com/forum/5-pc-news-patch-notes.xml/')
