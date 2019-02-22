@@ -7,7 +7,7 @@
 
 # installation
 * pip -r requirements.txt
-* add your id and token to hook.py
+* add your id and token to config.py
 * For more information see INSTALL.md file or wiki.
 # run
 * crontab -e

@@ -1,40 +1,27 @@
 import sqlite3
 from forum import Forum
-from reddit import Reddit
-
-_version = "0.3-krabbetein"
-
-# webhook setup
-username = 'PUBG webhook'
-id = ''
-token = ''
-
-# sqlite3 setup
-conn = sqlite3.connect('pubg.db', detect_types=sqlite3.PARSE_DECLTYPES|sqlite3.PARSE_COLNAMES)
-c = conn.cursor()
-try:
-   c.execute('''CREATE TABLE news (id text, date timestamp)''')
-except sqlite3.OperationalError:
-   print("sqlite table already exists")
+from database import Database
+import config
 
 
-# run
+def check_database():
+   with Database() as dbconn:
+      c = dbconn.cursor()
+      try:
+         c.execute('''CREATE TABLE news (id text, date timestamp)''')
+      except sqlite3.OperationalError:
+         print("sqlite table already exists")
+
 def main():
    # pubg forum
-   f = Forum(id, token, username)
+   f = Forum(config.id, config.token, config.bot_name)
    f.run()
-
-   ## currently a little buggy.
-   # pubg reddit
-   #r = Reddit(id, token, username)
-   #r.run()
-
-   #sqlite3
-   conn.close()
 
 
 if __name__ == '__main__':
-   if(token and id):
+   check_database()
+
+   if(config.id and config.token):
       main()
    else:
-      print("Please add tokenid and/or id to hook.py")
+      print("Please add your token and id to file config.py")

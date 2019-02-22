@@ -11,7 +11,7 @@ source venv/bin/activate
 
 pip -r requirements.txt
 
-vim hook.py and add token and id
+edit config.py and add token and id
 
 crontab -e
 
