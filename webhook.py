@@ -1,7 +1,6 @@
 import requests
 import json
 import database as Database
-import feedparser
 from datetime import datetime, timedelta
 import config
 
@@ -18,10 +17,6 @@ class Webhook:
         }
         self.username = username
 
-        """
-        self.conn = sqlite3.connect('pubg.db', detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES)
-        self.c = self.conn.cursor()
-        """
 
     def database(self):
         # sqlite3 setup
@@ -32,7 +27,6 @@ class Webhook:
                 c.execute('''CREATE TABLE news (id text, date timestamp)''')
             except sqlite3.OperationalError:
                 print("sqlite table already exists")
-
 
 
     def postWebhook(self, message):

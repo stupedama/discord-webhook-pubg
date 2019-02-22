@@ -12,4 +12,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - TODO.md file. What I'm planning on doing or working on currently.
 
 ### Removed
-- Removed the reddit.py file. I decided to remove the file because I'm not using it and I want this project to do one thing. 
+- Removed the reddit.py file. I decided to remove the file because I'm not using it and I want this project to do one thing.
