@@ -2,6 +2,9 @@
 id = ""
 token = ""
 
+# enable forums, set to False if you don't want to check the forum.
+enable_bug_reports = True
+enable_news = True
 
 # Name of the webhook/bot
 bot_name = "PUBG Bot"
