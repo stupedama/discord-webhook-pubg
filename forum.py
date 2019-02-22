@@ -1,6 +1,7 @@
 import feedparser
-from datetime import datetime, timedelta
+from datetime import datetime
 from database import Database
+from embed import Embed
 import config
 
 from webhook import Webhook
@@ -14,9 +15,13 @@ class Forum(Webhook):
       n = 5
 
       for x in range(0, n):
-         entry = pubg_news['entries'][x]['link']
+         link = pubg_news['entries'][x]['link']
          id = pubg_news['entries'][x]['id']
+         title = pubg_news['entries'][x]['title']
          post_date = pubg_news['entries'][x]['published']
+
+         image = "https://content.invisioncic.com/r273030/monthly_2017_07/PUBG_Logo_color_RGB5.png.05a3748e744a03bcc597cc88afef9533.png"
+
 
          with Database() as dbconn:
             c = dbconn.cursor()
@@ -25,6 +30,10 @@ class Forum(Webhook):
 
             if (data is None):
                if self.checkDate(post_date) is True:
+                  e = Embed()
+                  entry = e.make_embed(link, title, image)
+
+
                   self.postWebhook(entry)
                   c.execute('INSERT INTO news VALUES (?, ?)', (id, datetime.now()))
                   dbconn.commit()

@@ -30,7 +30,7 @@ class Webhook:
 
 
     def postWebhook(self, message):
-        w = {'content': message, 'username': self.username}
+        w = {'embeds': message, 'username': self.username}
         r = requests.post(self.url, headers=self.headers, data=json.dumps(w))
 
 
