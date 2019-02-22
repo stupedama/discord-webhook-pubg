@@ -1,6 +1,6 @@
 # please add your id and token to this file
-id = "408687681183154188"
-token = "jfyJ3GDKdLJDuV7gog0WwO_UkwpPZCCU_ZBv3gOsw15zpDptTwXIPZvXj1FPIwWgiJAG"
+id = ""
+token = ""
 
 # enable forums, set to False if you don't want to check the forum.
 enable_bug_reports = True
