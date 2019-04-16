@@ -3,7 +3,7 @@ id = ""
 token = ""
 
 # enable forums, set to False if you don't want to check the forum.
-enable_bug_reports = True
+enable_bug_reports = False
 enable_news = True
 
 # Name of the webhook/bot
