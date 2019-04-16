@@ -102,3 +102,5 @@ ENV/
 
 # discord-webhook-pubg specific
 pubg.db
+
+\.idea/
