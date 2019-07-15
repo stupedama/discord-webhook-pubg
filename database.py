@@ -6,7 +6,7 @@ class Database:
         pass
 
     def __enter__(self):
-        self.conn = sqlite3.connect('pubg.db', detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES)
+        self.conn = sqlite3.connect('.pubg.db', detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES)
         # self.c = self.conn.cursor()
         return self.conn
 
