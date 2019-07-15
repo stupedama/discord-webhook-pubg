@@ -6,7 +6,7 @@ It checks "News & Announcements" and "Patch Notes & Known Issues" from https://f
 - requests
 
 ## installation
-- pip -r requirements.txt
+- pip install -r requirements.txt
 - add your id and token to config.py
 - For more information see INSTALL.md file or wiki.
 
