@@ -13,7 +13,7 @@ class Webhook:
         self.url = "https://discordapp.com/api/webhooks/" + self.hookId + "/" + self.token
         self.headers = {
             'user-agent': 'discord-webhook-pubg ' + config.version,
-            'content-type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/json'
         }
         self.username = username
 
@@ -32,7 +32,6 @@ class Webhook:
     def postWebhook(self, message):
         w = {'embeds': message, 'username': self.username}
         r = requests.post(self.url, headers=self.headers, data=json.dumps(w))
-
 
     def checkDate(self, post_date, how_old=3):
         """
