@@ -1,4 +1,7 @@
 # discord-webhook-pubg
+
+# PUBG FORUMS IS SHUTDOWN AND CLOSED - DISCORD-WEBHOOK-PUBG IS NO MORE!
+
 It checks "News & Announcements" and "Patch Notes & Known Issues" from https://forums.pubg.com/. If the post is not older than 3 days and not posted before it sends a webhook to your discord channel.
 
 ## requirements
